@@ -98,49 +98,49 @@ When the rows are loaded properly, you will be able to access the relevent table
 #### Fact Table
 ```
 songplays
-	- songplay_id 	PK 
-	- start_time 	FK REFERENCES time (start_time)
-	- user_id	    FK REFERENCES users (user_id)
-	- level
-	- song_id 	    FK REFERENCES songs (song_id)
-	- artist_id 	FK REFERENCES artists (artist_id)
-	- session_id
-	- location
-	- user_agent
+	songplay_id SERIAL PRIMARY KEY ,
+	start_time BIGINT,
+    user_id INT,
+    level VARCHAR,
+    song_id VARCHAR,
+    artist_id VARCHAR,
+    session_id INT,
+    location VARCHAR,
+    user_agent VARCHAR
 
 ```
 
 #### Dimension Tables
 ```
 users
-	- user_id 	  PRIMARY KEY
-	- first_name
-	- last_name
-	- gender
-	- level
+	user_id INT PRIMARY KEY,
+    first_name VARCHAR,
+    last_name VARCHAR, 
+    gender VARCHAR,
+    level VARCHAR
 
 songs
-	- song_id 	  PRIMARY KEY
-	- title
-	- artist_id
-	- year
-	- duration
+	song_id VARCHAR PRIMARY KEY,
+    title VARCHAR,
+    artist_id VARCHAR,
+    year INT,
+    duration FLOAT
 
 artists
-	- artist_id   PRIMARY KEY
-	- name
-	- location
-	- latitude
-	- longitude
+	artist_id VARCHAR,
+    name VARCHAR,
+    location VARCHAR,
+    latitude FLOAT,
+    longitude FLOAT
 
 time
-	- start_time  PRIMARY KEY
-	- hour
-	- day
-	- week
-	- month
-	- year
-	- weekday
+	start_time BIGINT PRIMARY KEY,
+    hour INT,
+    day INT,
+    week INT,
+    month INT,
+    year INT,
+    weekday INT
 ```
 
 ## Tear Down

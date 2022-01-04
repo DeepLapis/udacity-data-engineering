@@ -28,8 +28,11 @@ def create_database():
 
 
 def drop_tables(cur, conn):
-    """
-    Drops each table using the queries in `drop_table_queries` list.
+    """Drops all tables defined in `sql_queries.drop_table_queries`.
+    
+    Args:
+        cur : the cursor object
+        conn : connection to the database
     """
     for query in drop_table_queries:
         cur.execute(query)
@@ -39,6 +42,10 @@ def drop_tables(cur, conn):
 def create_tables(cur, conn):
     """
     Creates each table using the queries in `create_table_queries` list. 
+
+    Args:
+        cur : the cursor object
+        conn : connection to the database
     """
     for query in create_table_queries:
         cur.execute(query)

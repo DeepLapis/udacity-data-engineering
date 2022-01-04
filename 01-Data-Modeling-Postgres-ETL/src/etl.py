@@ -5,6 +5,15 @@ import pandas as pd
 from sql_queries import *
 
 def process_song_file(cur, filepath):
+    """
+    Description:
+        Reads the raw JSON file and inserts relevent data into the artist table and song table respectively
+
+    Args:
+        cur: the cursor object
+        filepath: relative path to read the files
+    """
+
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -34,6 +43,17 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    Description:
+        Time information is inserted into the time_df. 
+        User information is upserted into the user_df table. 
+        Songplay information is inserted into the song_select table.
+
+    Args:
+        cur: the cursor object
+        filepath: relative path to read the files
+    """
+
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -99,6 +119,17 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    Description:
+        Uses fucntions 'process_song_file' and 'process_log_file' with the specified file path
+    
+    Args:
+        cur: the cursor object
+        filepath: relative path to read the files
+        conn: Database connection
+        func: To pass the above functions to process the files
+    """
+
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -118,6 +149,11 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    Description:
+        Establishes a database connection, processes song and log data, then
+        closes the cursor and database connection.
+    """
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 

@@ -54,12 +54,12 @@ artist_table_create = ("""
 time_table_create = ("""
     CREATE TABLE IF NOT EXISTS time
     (start_time BIGINT PRIMARY KEY,
-    hour INT,
-    day INT,
-    week INT,
-    month INT,
-    year INT,
-    weekday INT
+    hour INT NOT NULL,
+    day INT NOT NULL,
+    week INT NOT NULL,
+    month INT NOT NULL,
+    year INT NOT NULL,
+    weekday INT NOT NULL
     );
 """)
 

@@ -54,12 +54,12 @@ artist_table_create = ("""
 time_table_create = ("""
     CREATE TABLE IF NOT EXISTS time
     (start_time BIGINT PRIMARY KEY,
-    hour INT NOT NULL,
-    day INT NOT NULL,
-    week INT NOT NULL,
-    month INT NOT NULL,
-    year INT NOT NULL,
-    weekday INT NOT NULL
+    hour INT,
+    day INT,
+    week INT,
+    month INT,
+    year INT,
+    weekday INT
     );
 """)
 
@@ -68,14 +68,14 @@ time_table_create = ("""
 songplay_table_insert = ("""
     INSERT INTO songplays 
         (songplay_id, 
-         start_time, 
-         user_id, 
-         level, 
-         song_id, 
-         artist_id, 
-         session_id, 
-         location, 
-         user_agent)
+        start_time, 
+        user_id, 
+        level, 
+        song_id, 
+        artist_id, 
+        session_id, 
+        location, 
+        user_agent)
     VALUES (DEFAULT, %s, %s, %s, %s, %s, %s, %s ,%s)
     ON CONFLICT DO NOTHING; 
 """)
@@ -136,7 +136,8 @@ song_select = ("""
     SELECT songs.song_id, artists.artist_id
     FROM songs
     JOIN artists 
-      ON songs.artist_id = artists.artist_id;
+      ON songs.artist_id = artists.artist_id
+    WHERE songs.title=%s AND artists.name=%s AND songs.duration=%s;
 """)
 
 # QUERY LISTS

@@ -53,4 +53,41 @@ To further verify that the tables are created and inserted correctly, this noteb
 
 In this script, the schema of the tables are developed and the logic for data transformation appears here
 
+### JSON file for events data
+
+As a note, the json file path file is used because the source data does not have a stable consistent appearence of columns. The JSON file would specifiy the scan of the source file and the corresponding columns in order to ensure that the relevent data is loaded into the correct columns in the staging table.
+
+Good resources about this can be found here:
+* https://docs.aws.amazon.com/redshift/latest/dg/r_COPY_command_examples.html#copy-from-json-examples-using-jsonpaths
+
+* https://stackoverflow.com/questions/23835567/copying-json-objects-with-multiple-layouts-from-s3-into-redshift
+
+Sample of the log_data_path.json
+
+```
+{
+    "jsonpaths": [
+        "$.artist",
+        "$.auth",
+        "$.firstName",
+        "$.gender",
+		"$.itemInSession",
+		"$.lastName",
+		"$.length",
+		"$.level",
+		"$.location",
+		"$.method",
+		"$.page",
+		"$.registration",
+		"$.sessionId",
+		"$.song",
+		"$.status",
+		"$.ts",
+		"$.userAgent",
+		"$.userId"
+    ]
+}
+```
+
+
 

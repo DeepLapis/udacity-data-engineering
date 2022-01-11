@@ -50,16 +50,16 @@ staging_events_table_create= ("""
 
 staging_songs_table_create = ("""
     CREATE TABLE IF NOT EXISTS staging_songs (
-        artist_id          TEXT NOT NULL , 
+        artist_id          TEXT, 
         artist_latitude    NUMERIC, 
         artist_location    TEXT, 
         artist_longitude   NUMERIC,
-        artist_name        TEXT NOT NULL,      
-        duration           FLOAT NOT NULL, 
-        num_songs          INTEGER NOT NULL, 
-        song_id            TEXT NOT NULL, 
-        title              TEXT NOT NULL, 
-        year               INTEGER NOT NULL
+        artist_name        TEXT,      
+        duration           FLOAT, 
+        num_songs          INTEGER, 
+        song_id            TEXT, 
+        title              TEXT, 
+        year               INTEGER
     )
         
 """)
